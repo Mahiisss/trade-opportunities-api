@@ -1,0 +1,154 @@
+# Trade Opportunities API
+
+## Overview
+
+I built this project as a FastAPI-based backend service that analyzes market trends and provides trade opportunity insights for different sectors in India. The API takes a sector name as input and returns a structured markdown report with current trends, opportunities, risks, and future outlook.
+
+The focus of this project was not just to make it work, but to design it in a clean, modular, and production-like way with proper error handling and security.
+
+
+
+## Features
+
+- Built using FastAPI  
+- Single endpoint: /analyze/{sector}  
+- API key-based authentication  
+- Rate limiting to prevent abuse  
+- Input validation for safe requests  
+- In-memory usage tracking  
+- Real-time data fetching using DuckDuckGo search  
+- AI-ready analysis layer with fallback support  
+- Structured markdown report generation  
+
+
+
+## Tech Stack
+
+- Python  
+- FastAPI  
+- Uvicorn  
+- SlowAPI (rate limiting)  
+- DuckDuckGo Search  
+- Google Gemini API (google-genai)  
+
+
+
+## API Endpoint
+
+GET /analyze/{sector}
+
+Example:
+
+GET /analyze/technology
+
+Headers:
+
+x-api-key: 1234mahi
+
+
+
+## Sample Output
+
+The API returns a structured markdown report like:
+
+# Trade Opportunities Report: Technology
+
+## Overview  
+Insights for the technology sector in India.
+
+## Analysis  
+Includes:
+- Current Trends  
+- Trade Opportunities  
+- Risks  
+- Future Outlook  
+
+## Conclusion  
+Summary of opportunities in the sector.
+
+
+
+## Project Structure
+
+main.py               # API routes and application setup  
+security.py           # API key authentication  
+validators.py         # Input validation  
+analysis_service.py   # Data fetching, analysis, markdown generation  
+requirements.txt  
+
+
+
+## Setup Instructions
+
+1. Clone the repository
+
+git clone <your-repo-link>  
+cd Trade-Opportunities-API  
+
+2. Create virtual environment
+
+python -m venv .venv  
+
+Activate (Windows PowerShell):
+
+.\.venv\Scripts\Activate.ps1  
+
+3. Install dependencies
+
+pip install -r requirements.txt  
+
+4. Set environment variables
+
+$env:API_KEY="1234mahi"  
+$env:GEMINI_API_KEY="your_api_key"  
+
+5. Run the server
+
+uvicorn main:app --reload  
+
+6. Open API docs
+
+http://127.0.0.1:8000/docs  
+
+
+
+## Testing
+
+You can test the API using Swagger UI, Postman, or curl.
+
+Example:
+
+curl -X GET "http://127.0.0.1:8000/analyze/technology" -H "x-api-key: 1234mahi"
+
+
+
+## Key Design Decisions
+
+- Used a layered structure to separate API, validation, security, and business logic  
+- Implemented fallback handling to ensure the API always returns useful output even if external services fail  
+- Used in-memory storage as required by the assignment  
+- Added rate limiting and authentication to simulate real-world API behavior  
+
+
+
+## Challenges Faced
+
+- Handling Gemini API model compatibility and SDK changes  
+- Debugging issues with external APIs and environment setup  
+- Ensuring stable output even when external data or AI responses fail  
+- Managing virtual environment and dependency issues  
+
+
+
+## What I Learned
+
+- How to build a clean and modular FastAPI backend  
+- Importance of handling external API failures gracefully  
+- Implementing authentication and rate limiting in APIs  
+- Adapting to changes in third-party APIs  
+
+
+
+## Conclusion
+
+This project demonstrates a complete backend system with proper structure, security, and reliability. The focus was on building a maintainable and practical API rather than just a basic implementation.
