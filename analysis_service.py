@@ -1,6 +1,6 @@
 from duckduckgo_search import DDGS
 
-
+import google.generativeai as genai
 
 async def fetch_market_data(sector: str):
     try:
