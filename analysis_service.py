@@ -1,5 +1,5 @@
 from duckduckgo_search import DDGS
-import google.genai as genai
+
 
 
 async def fetch_market_data(sector: str):
